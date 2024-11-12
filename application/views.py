@@ -10,7 +10,7 @@ def aboutus(request):
 
 def contact(request):
     if request.method == 'POST':
-        form = StudentForm(request.POST)
+        form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('contact')
