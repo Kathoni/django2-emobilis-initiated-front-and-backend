@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+
+{% load static %}
 {% block title %}
 About Us
 {% endblock %}
@@ -14,24 +16,22 @@ About Us
        <th scope="col">COURSE</th>
    </tr>
    </thead>
-    <tbody>
-        {% for student in data %}
-    <tr>
-        <td>
-            {% if student.image %}
-               <img src="{{ student.image.url }}" alt="{{ student.name }}">
-            {% else %}
-               <img src="" alt=""></img>
-            {% endif %}
-        </td>
-        <td>{{ student.name }}</td>
-        <td>{{ student.age }}</td>
-        <td>{{ student.gender }}</td>
-        <td>{{ student.course }}</td>
-
-    </tr>
-    </tbody>
+   <tbody>
+       {% for student in data %}
+       <tr>
+           <td>
+               {% if student.image %}
+                   <img src="{{ student.image.url }}" alt="{{ student.name }}" style="width: 80px; height: 80px; ">
+               {% else %}
+                   <img src="{% static 'images/pfpplaceolder.png' %}" alt="" style="width: 80px; height: 80px;">
+               {% endif %}
+           </td>
+           <td>{{ student.name }}</td>
+           <td>{{ student.age }}</td>
+           <td>{{ student.gender }}</td>
+           <td>{{ student.course }}</td>
+       </tr>
+       {% endfor %}
+   </tbody>
 </table>
-
-
 {% endblock %}
