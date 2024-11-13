@@ -1,6 +1,37 @@
 {% extends 'base.html' %}
+{% block title %}
+About Us
+{% endblock %}
 {% block content %}
-<h1>About Us</h1>
+<h1>Student List</h1>
+<table class="table table-bordered">
+   <thead>
+   <tr>
+       <th scope="col">PHOTO</th>
+       <th scope="col">NAME</th>
+       <th scope="col">AGE</th>
+       <th scope="col">GENDER</th>
+       <th scope="col">COURSE</th>
+   </tr>
+   </thead>
+    <tbody>
+        {% for student in data %}
+    <tr>
+        <td>
+            {% if student.image %}
+               <img src="{{ student.image.url }}" alt="{{ student.name }}">
+            {% else %}
+               <img src="" alt=""></img>
+            {% endif %}
+        </td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.gender }}</td>
+        <td>{{ student.course }}</td>
+
+    </tr>
+    </tbody>
+</table>
 
 
 {% endblock %}

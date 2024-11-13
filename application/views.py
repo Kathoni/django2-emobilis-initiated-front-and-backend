@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from application.forms import StudentForm
+from application.models import Student
+
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
 def aboutus(request):
-    return render(request, 'aboutus.html')
+    data = Student.objects.all()
+
+    return render(request, 'aboutus.html', {'data': data})
 
 def contact(request):
     if request.method == 'POST':
