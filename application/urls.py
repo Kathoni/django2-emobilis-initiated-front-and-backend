@@ -26,5 +26,6 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('contact/', views.contact, name='contact'),
+    path('edit/<int:id>/', views.edit, name='edit'),
 ]
 
