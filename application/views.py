@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from pyexpat.errors import messages
+
 from application.forms import StudentForm
 from application.models import Student
 
@@ -22,5 +24,14 @@ def contact(request):
         form = StudentForm()
     return render(request, 'contact.html', {'form': form})
 
-def edit(request):
-    return render(request, 'edit.html')
+def edit(request, id):
+    student = get_object_or_404(Student , id=id)
+    if request.method == 'POST':
+        form = StudentForm(request.POST, request.FILES, instance=student)
+        if form.is_valid():
+            form.save()
+        else:
+            messages.error(request, 'Something went wrong')
+    else:
+        form = StudentForm(instance=student)
+    return render(request, 'edit.html', {'form': form, 'student': student})
