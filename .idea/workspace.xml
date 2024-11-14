@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32b3283a-0771-45cf-9006-9cb4de0fc605" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/templates/aboutus.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/aboutus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/templates/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/templates/edit.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +16,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -122,7 +120,7 @@
       <workItem from="1731306273247" duration="1320000" />
       <workItem from="1731307722670" duration="6728000" />
       <workItem from="1731323255016" duration="4833000" />
-      <workItem from="1731346071005" duration="18686000" />
+      <workItem from="1731346071005" duration="19110000" />
     </task>
     <servers />
   </component>
