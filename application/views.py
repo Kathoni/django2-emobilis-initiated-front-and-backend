@@ -36,3 +36,14 @@ def edit(request, id):
     else:
         form = StudentForm(instance=student)
     return render(request, 'edit.html', {'form': form, 'student': student})
+
+def delete(request, id):
+    student = get_object_or_404(Student, id=id)
+
+    try:
+        student.delete()
+        messages.success(request, 'Your changes have been deleted.')
+    except Exception as e:
+        messages.error(request, "Something went wrong.")
+
+    return redirect('aboutus')
