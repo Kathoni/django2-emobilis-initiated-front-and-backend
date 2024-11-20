@@ -17,10 +17,11 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
 from project import settings
+from application import views  # Import your views from the application app
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('application/', include('application.urls')),
-]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', views.index, name='home'),  # Add a root URL pattern that maps to the index view
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,8 +1,13 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages  # Correct import for messages
+from rest_framework import status
+from rest_framework.decorators import api_view
 
 from application.forms import StudentForm
 from application.models import Student
+from application.serializers import StudentSerializer
+
 
 # Create your views here.
 def index(request):
@@ -47,3 +52,16 @@ def delete(request, id):
         messages.error(request, "Something went wrong.")
 
     return redirect('aboutus')
+
+@api_view(['GET', 'POST'])     # Use a list to specify HTTP methods
+def studentsapi(request):
+    if request.method == 'GET':
+        students = Student.objects.all()
+        serializer = StudentSerializer(students, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    elif request.method == 'POST':
+        serializer = StudentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)     # Corrected `serializer.errorsc` typo
