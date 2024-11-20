@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 from django.conf.global_settings import STATICFILES_DIRS
@@ -134,3 +134,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MPESA_ENVIRONMENT =
+MPESA_CONSUMER_KEY =
+MPESA_CONSUMER_SECRET =
+MPESA_SHORTCODE =
+MPESA_EXPRESS_SHORTCODE =
+MPESA_SHORTCODE_TYPE =
+MPESA_PASSKEY =
+MPESA_INITIATOR_USERNAME =
+MPESA_INITIATOR_SECURITY_CREDENTIALS =
