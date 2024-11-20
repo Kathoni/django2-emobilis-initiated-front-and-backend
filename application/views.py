@@ -1,6 +1,10 @@
-from django.http import JsonResponse
+from http.client import responses
+
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages  # Correct import for messages
+from django.urls import translate_url
+from django_daraja.mpesa.core import MpesaClient
 from rest_framework import status
 from rest_framework.decorators import api_view
 
@@ -77,3 +81,14 @@ def courseapi(request):
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+def mpesaapi(request):
+    client = MpesaClient()
+    phone_number = '0111725146'
+    amount = 10
+    account_reference = 'eMobilis'
+    translate_desc = 'Payment for Web Dev'
+    callback_url = 'https://darajambili.herokuapp.com/callback';
+    response = client.stk_push(phone_number, amount, account_reference,translate_desc, callback_url)
+    return HttpResponse(response )
