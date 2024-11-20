@@ -5,8 +5,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 
 from application.forms import StudentForm
-from application.models import Student
-from application.serializers import StudentSerializer
+from application.models import Student, Course
+from application.serializers import StudentSerializer, CourseSerializer
 
 
 # Create your views here.
@@ -65,3 +65,15 @@ def studentsapi(request):
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)     # Corrected `serializer.errorsc` typo
+@api_view(['GET', 'POST'])
+def courseapi(request):
+    if request.method == 'GET':
+        courses = Course.objects.all()
+        serializer = CourseSerializer(courses, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    elif request.method == 'POST':
+        serializer = CourseSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
